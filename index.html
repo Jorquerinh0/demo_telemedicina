@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#e8f5ff">
+  <meta name="description" content="Cerca. Tu espacio de telemedicina. Demo interactiva sin servidor, con datos ficticios.">
+  <title>Cerca · Telemedicina</title>
+  <link rel="icon" href="./favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./demo.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Ir al contenido principal</a>
+  <header class="header">
+    <a class="brand" href="#inicio" aria-label="Cerca, ir al inicio"><span class="brand-symbol" aria-hidden="true">+</span><span>cerca<span class="brand-caption">TELEMEDICINA</span></span></a>
+    <div class="header-actions">
+      <span class="local-label"><span aria-hidden="true"></span> Demo interactiva</span>
+      <button class="button quiet" id="access-open" aria-haspopup="dialog"><span class="access-icon" aria-hidden="true">Aa</span><span>Accesibilidad</span></button>
+      <div class="menu-wrap" id="menu-wrap" hidden>
+        <button class="button secondary" id="menu-toggle" aria-expanded="false" aria-controls="main-menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Menú</button>
+        <nav id="main-menu" aria-label="Navegación principal" hidden></nav>
+      </div>
+    </div>
+  </header>
+  <div class="demo-notice"><span><strong>Demostración</strong> · Datos ficticios. Cada visitante prueba su propia copia; se reinicia al recargar.</span><button class="button secondary" id="reset-demo">Reiniciar demo</button></div>
+  <div id="session-strip" class="session-strip" hidden></div>
+  <main id="main" tabindex="-1"><div class="initial-loading" role="status">Preparando tu espacio…</div></main>
+  <footer class="footer"><span><strong>Cerca.</strong> Cuidarte empieza por hacerlo fácil.</span><span>Grupo 6 · Prototipo académico · Datos ficticios</span></footer>
+  <div id="toast" class="toast" role="status" aria-live="polite" aria-atomic="true" hidden></div>
+  <div id="urgent-error" class="sr-only" role="alert"></div>
+
+  <dialog id="access-dialog" aria-labelledby="access-title">
+    <div class="dialog-heading"><h2 id="access-title">A tu manera</h2><button class="icon-button" data-close="access-dialog" aria-label="Cerrar ajustes de accesibilidad">×</button></div>
+    <p class="muted">Elige cómo prefieres ver Cerca. Tus ajustes se guardan en este navegador.</p>
+    <fieldset><legend>Tamaño del texto</legend><div class="choice-group" id="font-choices"><button class="button secondary" data-font="normal" aria-pressed="true">Normal</button><button class="button secondary" data-font="large" aria-pressed="false">Grande</button><button class="button secondary" data-font="extra" aria-pressed="false">Muy grande</button></div></fieldset>
+    <label class="toggle-row"><span><strong>Alto contraste</strong><small>Texto y controles más definidos.</small></span><input type="checkbox" id="contrast-toggle" role="switch"></label>
+    <label class="toggle-row"><span><strong>Reducir movimiento</strong><small>Una experiencia visual más tranquila.</small></span><input type="checkbox" id="motion-toggle" role="switch"></label>
+    <p class="small muted">También puedes navegar con Tab y activar botones con Enter. El menú se cierra con Escape.</p>
+    <button class="button primary full" data-close="access-dialog">Listo, continuar</button>
+  </dialog>
+  <dialog id="confirm-dialog" aria-labelledby="confirm-title">
+    <div class="dialog-heading"><h2 id="confirm-title">Confirmar acción</h2><button class="icon-button" data-close="confirm-dialog" aria-label="Cerrar confirmación">×</button></div>
+    <p id="confirm-message"></p><div class="dialog-actions"><button class="button secondary" data-close="confirm-dialog">Volver</button><button id="confirm-yes" class="button primary">Confirmar</button></div>
+  </dialog>
+</body>
+</html>
